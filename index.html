@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/863dfe75c2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Weather App</title>
+</head>
+
+<body>
+    <div id="preloader">
+
+    </div>
+
+    <div class="search-box">
+        <input type="search" placeholder="Search By City" autocomplete="on" class="search-txt" id="search-location">
+        <!-- <a href="#"> -->
+        <i class="fas fa-search search-btn" onclick="searchLocation()"></i>
+        <!-- </a> -->
+    </div>
+
+    <div class="searched-window" id="search-window">
+        <div id="searchloader">
+        </div>
+        <div class="window">
+            <div class="set-close"> 
+                <div class="searched-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div id="searched-city">Nari</div>
+                    <!-- <div id="searched-country">In</div> -->
+                </div>
+                <i class="fas fa-times" id="close" onclick="closeSearchWindow()"></i>
+            </div>
+            
+            <div class="searched-data">
+                <div id="search-logo">
+                    <img src="http://openweathermap.org/img/wn/10d@4x.png" alt="current weather img">
+                </div>
+                <div class="searched-temp">
+                    <div id="searched-temp">29&#176;</div>
+                    <div id="searched-dis">Mostly cloudly</div>
+                </div>
+            </div>
+            <div class="searched-extra">
+                <div class="searched-heading">
+                    <div class="searched-hiteam">
+                        <img src="photo/humidity.png" class="icon">
+                        Humidity
+                    </div>
+                    <div class="searched-hiteam">
+                        <img src="photo/wind.png" class="icon">
+                        Wind Speed
+                    </div>
+                    <div class="searched-hiteam">
+                        <img src="photo/pressure-indicator.png" class="icon">
+                        Pressure
+                    </div>
+                    <div class="searched-hiteam">
+                        <img src="photo/mountain.png" class="icon">
+                        Visibility
+                    </div>
+                    <div class="searched-hiteam">
+                        <img src="photo/sunrise.png" class="icon">
+                        Sunrise
+                    </div>
+                    <div class="searched-hiteam">
+                        <img src="photo/sunset.png" class="icon">
+                        Sunset
+                    </div>
+                </div>
+                <div class="searched-value">
+                    <div id="shumidity">73 %</div>
+                    <div id="swind">10 km/h</div>
+                    <div id="spressure">1005 hPa</div>
+                    <div id="svisibility">10 km</div>
+                    <div id="ssunrise">06:07 am</div>
+                    <div id="ssunset">19:07 pm</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="current-info">
+            <div class="date-container">
+                <div>
+                    <div class="time" id="time">
+                        12:11 <span id="am-pm">PM</span>
+                    </div>
+                    <div class="date" id="date">
+                        Thursday, 24 Jun
+                    </div>
+                </div>
+                <div class="place-container">
+                    <div class="time-zone" id="time-zone">Asia/Gujarat</div>
+                    <div class="country" id="country">IN</div>
+                    <div class="location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="city" id="city">bhavnagar</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="others" id="current-weather-items">
+                <div class="weather-item">
+                    <div class="temp-img current-box">
+                        <div id="ctemp-logo">
+                            <img src="http://openweathermap.org/img/wn/10d@4x.png" alt="current weather img">
+                        </div>
+                        <div class="temp-status">
+                            <p id="ctemp">30.74&#176; c</p>
+                            <span id="cdiscription">Mostly sunny</span>
+                        </div>
+                    </div>
+
+                    <div class="current-details current-box">
+                        <div>
+                            <div class="current-item" id="humidity">
+                                <img src="photo/humidity.png" class="icon">
+                                <span id="chumidity">Humidity 73%</span>
+                            </div>
+                            <div class="current-item" id="pressure">
+                                <img src="photo/pressure-indicator.png" class="icon">
+                                <span id="cpressure">Pressure 1008 hPa</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="current-item" id="wind">
+                                <img src="photo/wind.png" class="icon">
+                                <span id="cwindspeed">Wind Speed 8.3 m/s</span>
+                            </div>
+                            <div class="current-item" id="clouds">
+                                <img src="photo/cloud.png" class="icon">
+                                <span id="ccloudiness">Cloudiness 99%</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="current-item" id="visibility">
+                                <img src="photo/mountain.png" class="icon">
+                                <span id="cvisibility">Visibility 306 m</span>
+                            </div>
+                            <div class="current-item" id="uvi">
+                                <img src="photo/uv.png" class="icon">
+                                <span id="cuvi">UV index 1.4</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="temp-time current-box" id="scroll-temp-time">
+                        <div class="max-min">
+                            <div class="space">
+                                <img src="photo/temperature-max.png" class="icon">
+                                <span id="cmax-temp">31.41&#176; c</span>
+                            </div>
+                            <div class="space">
+                                <img src="photo/temperature-min.png" class="icon">
+                                <span id="cmin-temp">28.37&#176; c</span>
+                            </div>
+                        </div>
+                        <dic class="day-night">
+                            <div class="space">
+                                <img src="photo/sunny-day.png" class="icon">
+                                <span id="cday-temp">31.41&#176; c</span>
+                            </div>
+                            <div class="space">
+                                <img src="photo/moon.png" class="icon">
+                                <span id="cnight-temp">28.37&#176; c</span>
+                            </div>
+                        </dic>
+                        <dic class="rise-set">
+                            <div class="space">
+                                <img src="photo/sunrise.png" class="icon">
+                                <span id="csunrise">6:10 am</span>
+                            </div>
+                            <div class="space">
+                                <img src="photo/sunset.png" class="icon">
+                                <span id="csunset">7:30 pm</span>
+                            </div>
+                        </dic>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scroll-button" id="current-scroll" onclick="CurrentScrollRight()"></div>
+        </div>
+        
+    </div>
+
+    <div class="heading">Todays Weather</div>
+    <div class="hourly-forecast" id="hourly-forecast-items">
+        <div class="hourly-item">
+            <div class="hourly-time">3 pm</div>
+            <img src="http://openweathermap.org/img/wn/10d@2x.png" class="hourly-logo">
+            <div class="hourly-temp">34&#176;c</div>
+        </div>
+        <div class="hourly-item">
+            <div class="hourly-time">3 pm</div>
+            <img src="http://openweathermap.org/img/wn/10d@2x.png" class="hourly-logo">
+            <div class="hourly-temp">34&#176;c</div>
+        </div>
+        <div class="hourly-item">
+            <div class="hourly-time">3 pm</div>
+            <img src="http://openweathermap.org/img/wn/10d@2x.png" class="hourly-logo">
+            <div class="hourly-temp">34&#176;c</div>
+        </div>
+        <div class="hourly-item">
+            <div class="hourly-time">3 pm</div>
+            <img src="http://openweathermap.org/img/wn/10d@2x.png" class="hourly-logo">
+            <div class="hourly-temp">34&#176;c</div>
+        </div>
+        <div class="hourly-item">
+            <div class="hourly-time">3 pm</div>
+            <img src="http://openweathermap.org/img/wn/10d@2x.png" class="hourly-logo">
+            <div class="hourly-temp">34&#176;c</div>
+        </div>
+        <div class="hourly-item">
+            <div class="hourly-time">3 pm</div>
+            <img src="http://openweathermap.org/img/wn/10d@2x.png" class="hourly-logo">
+            <div class="hourly-temp">34&#176;c</div>
+        </div>
+        <div class="hourly-item">
+            <div class="hourly-time">3 pm</div>
+            <img src="http://openweathermap.org/img/wn/10d@2x.png" class="hourly-logo">
+            <div class="hourly-temp">34&#176;c</div>
+        </div>
+        <div class="hourly-item">
+            <div class="hourly-time">3 pm</div>
+            <img src="http://openweathermap.org/img/wn/10d@2x.png" class="hourly-logo">
+            <div class="hourly-temp">34&#176;c</div>
+        </div>
+        <div class="hourly-item">
+            <div class="hourly-time">3 pm</div>
+            <img src="http://openweathermap.org/img/wn/10d@2x.png" class="hourly-logo">
+            <div class="hourly-temp">34&#176;c</div>
+        </div>
+        <div class="hourly-item">
+            <div class="hourly-time">3 pm</div>
+            <img src="http://openweathermap.org/img/wn/10d@2x.png" class="hourly-logo">
+            <div class="hourly-temp">34&#176;c</div>
+        </div>
+    </div>
+
+    <div class="heading">Next 7 days</div>
+    <div class="future-forecast">
+
+        <div class="weather-forecast" id="weather-forecast">
+            <div class="weather-forecast-item">
+                <div class="day">Tue</div>
+                <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">
+                <div class="temp">night - 25.6&#176; c</div>
+                <div class="temp">Day - 35.6&#176; c</div>
+            </div>
+            <div class="weather-forecast-item">
+                <div class="day">Wed</div>
+                <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">
+                <div class="temp">night - 25.6&#176; c</div>
+                <div class="temp">Day - 35.6&#176; c</div>
+            </div>
+            <div class="weather-forecast-item">
+                <div class="day">Thur</div>
+                <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">
+                <div class="temp">night - 25.6&#176; c</div>
+                <div class="temp">Day - 35.6&#176; c</div>
+            </div>
+            <div class="weather-forecast-item">
+                <div class="day">Fri</div>
+                <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">
+                <div class="temp">night - 25.6&#176; c</div>
+                <div class="temp">Day - 35.6&#176; c</div>
+            </div>
+            <div class="weather-forecast-item">
+                <div class="day">Sat</div>
+                <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">
+                <div class="temp">night - 25.6&#176; c</div>
+                <div class="temp">Day - 35.6&#176; c</div>
+            </div>
+            <div class="weather-forecast-item">
+                <div class="day">Sun</div>
+                <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="weather icon" class="w-icon">
+                <div class="temp">night - 25.6&#176; c</div>
+                <div class="temp">Day - 35.6&#176; c</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="script.js"></script>
+
+    <script>
+        var loader = document.getElementById('preloader');
+        window.addEventListener("load", loading);
+
+        function loading() {
+            window.setTimeout(function () {
+                loader.style.display = "none";
+                console.log("display");
+            }, 2000);
+            console.log("loading fun");
+        }
+    </script>
+
+</body>
+
+</html>
